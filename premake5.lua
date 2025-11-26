@@ -132,7 +132,8 @@ project_ext_plugin(ext, ogn.plugin_project)
     }
     libdirs {
         "%{target_deps}/python/libs",
-        "%{target_deps}/cuda/lib/x64"
+        "%{target_deps}/cuda/lib/x64",
+        "%{target_deps}/usd/release/lib"
     }
     links {
 
@@ -150,7 +151,7 @@ project_ext_plugin(ext, ogn.plugin_project)
             "%{target_deps}/python/include/python3.10",
             "%{target_deps}/cuda"
         }
-        -- NOTE: std::string not ABI safe in omni/carbonite context
-        -- see https://docs.omniverse.nvidia.com/kit/docs/carbonite/latest/docs/omni/String.html
-        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -pthread -lstdc++fs -Wno-error -fabi-version=11" }
-        linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/python/lib:" }
+        -- NOTE: Updated for Isaac Sim 5.1 - use C++11 ABI to match Isaac Sim's USD libraries
+        -- Isaac Sim 5.1 uses _GLIBCXX_USE_CXX11_ABI=1 (C++11 ABI)
+        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=1 -pthread -lstdc++fs -Wno-error -fabi-version=11" }
+        linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/usd/release/lib:%{target_deps}/python/lib:" }
