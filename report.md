@@ -2,6 +2,12 @@ using kit 107.3.0 (e8b660c96183f4a35f12f5ff75e37756ae6aee3b) with Isaac Sim 5.1
 
 ISAACSIM --enable uosm.isaac.px4_bridge
 
+
+Recordings and screenshots are available in the following Google Drive folder:
+https://drive.google.com/drive/folders/1dDV8QXW2VMLbV2tpHYmBT32S8ixZ61ms?usp=sharing
+
+Logs below:
+
 ```bash
 
 |---------------------------------------------------------------------------------------------|
